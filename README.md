@@ -1,6 +1,6 @@
 #查看删除我的好友-web版本
 
-基于git大神[0x5e](https://github.com/0x5e)的项目[查看被删的微信好友](https://github.com/0x5e/wechat-deleted-friends)。用webpy二次开发的web版本。
+基于git大神[0x5e](https://github.com/0x5e)的项目[查看被删的微信好友](https://github.com/0x5e/wechat-deleted-friends)。用webpy二次开发的web版本。Demo地址：http://139.196.22.71:8890
 
 #### 功能
 

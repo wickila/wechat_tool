@@ -43,6 +43,10 @@ class WeChatClient:
         self.member_count = 0
         self.unstar_member_count=0
 
+        if not os.path.exists('static/img/qrcode'):
+            os.mkdir('static/img/qrcode')
+        if not os.path.exists('static/img/avatar'):
+            os.mkdir('static/img/avatar')
         self.qrcode = 'static/img/qrcode/' + self.session_id + ".jpg"
 
         if hasattr(ssl, '_create_unverified_context'):
