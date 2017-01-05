@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, “Helvetica Neue”, Helvetica, sans-serif, "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", serif;
+    background-color: #f8f8f8
+}
+
+#app-nav {
+    background-color: white
+}
+
+.navbar-brand {
+    padding: 13px 15px
+}
+
+#content {
+    margin-top: 60px;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: white
+}
+
+.btn {
+    border-radius: 0
+}
+
+textarea {
+    border-radius: 0 !important
+}
+
+
+
+html {
+    position: relative;
+    min-height: 100%
+}
+
+body {
+    margin-bottom: 90px
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    padding: 0;
+    background-color: white
+}
+
+.footer p, .footer-list {
+    line-height: .8em;
+    margin-top: 20px
+}
+
+body > .container {
+    padding: 0 15px 0
+}

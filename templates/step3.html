@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        #content {
+            background-color: transparent;
+            border: none;
+        }
+
+        #block {
+            border: solid #e8e8e8 1px;
+            border-radius: 4px;
+            background-color: white;
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+
+        .thumbnail {
+            display: inline;
+            width: 30px;
+            margin: 0 5px;
+            padding: 0;
+        }
+    </style>
+{% endblock %}
+{% block script %}
+    <script>
+        $(function () {
+            function checkProgress() {
+                $.ajax({
+                    url: '/progress',
+                    success: function (data) {
+                        if (data.result) {
+                            if (data.sending) {
+                                $(".sending-tip").show();
+                                checkProgress();
+                            } else {
+                                $(".sending-tip").hide();
+                            }
+                            $(".sended").text(data.sended);
+                            if(data.sended==data.total){
+                                $(".sending-tip").text("正在置顶已删除你的好友")
+                            }
+                            var list = $(".list-group");
+                            $(".list-group-item").remove();
+                            for (var i = 0; i < data.strangers.length; i++) {
+                                var stranger = data.strangers[i];
+                                var item = $('<li class="list-group-item text-left">' + (i + 1) + '. '
+                                        + '<img class="thumbnail" src="/static/img/avatar/' + stranger.username.slice(1) + '.jpg"/>'
+                                        + stranger.nickname + '</li>');
+                                list.append(item);
+                            }
+                        } else if (data.need_login) {
+                            window.location = '/step1'
+                        }
+                    }
+                });
+            }
+
+            checkProgress();
+        })
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="text-center row">
+        <div id="block" class="col-sm-4 col-sm-offset-4">
+            <h3 class="page-header">第三步:检测成功</h3>
+            <p>下面是占着茅坑不拉屎的同学</p>
+            <div class="">
+                <ul class="list-group">
+                </ul>
+                <p class="sending-tip" {% if not sending %}style="display: none"{% endif %}>检查中,请再等等...<span
+                        class="sended">{{ sended }}</span>/{{ total }} </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

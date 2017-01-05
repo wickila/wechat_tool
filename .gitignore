@@ -1,0 +1,6 @@
+.idea
+*.pyc
+sessions/*
+config/config.json
+static/img/avatar/*
+static/img/qrcode/*

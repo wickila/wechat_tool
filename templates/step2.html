@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        #content {
+            background-color: transparent;
+            border: none;
+        }
+
+        #block {
+            border: solid #e8e8e8 1px;
+            border-radius: 4px;
+            background-color: white;
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="text-center row">
+        <div id="block" class="col-sm-4 col-sm-offset-4">
+            <h3 class="page-header">第二步:发送检测消息</h3>
+            <form id="step2-form" role="form" action="/step2" method="post">
+                <h4>hi, {{ me.NickName }}. 给所有好友的一句话吧</h4>
+                <input style="margin:0 10px 15px;" name="exceptstar" checked type="checkbox">不发送给星标好友
+                <textarea class="form-control" name="msg" rows="6">新年快乐!</textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%;margin-top:20px;">发送</button>
+            </form>
+            <p class="text-muted"></p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        img {
+            width: 100%;
+        }
+
+        .container .jumbotron, .container-fluid .jumbotron {
+            border-radius: 0 !important;
+            background-color: white;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h3>查看被删的微信好友--网页版</h3>
+            <p>有时候微信里面有很多默默把我们删除的人,但是他们又占了微信好友数量。所以我们需要把他们找出来。
+                <br>本程序基于0x5e大神的项目--
+                <a href="https://github.com/0x5e/wechat-deleted-friends">查看被删的微信好友</a>。原理是通过给每个好友发送一条消息,如果该好友删除你了,微信系统会有相应提示。
+                系统根据这个提示列出来已删除你的好友。</p>
+            <p>
+                注意事项:
+            </p>
+            <ul>
+                <li>系统会给每个好友发送一条消息,用来检测好友是否已删除你。</li>
+                <li>如果你有不想打扰的人,请在使用前给该好友加星标。</li>
+                <li>系统检测完毕以后,不会持续登录你的微信账号,在一段时间内就自动退出微信登录了。当然,你也可以选择主动退出账号。</li>
+            </ul>
+            <p><a class="btn btn-primary btn-lg pull-right" href="/step1" role="button">开始使用</a></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="thumbnail" src="/static/img/step1.jpg"/>
+            </div>
+            <div class="col-sm-4">
+                <img class="thumbnail" src="/static/img/step2.jpg"/>
+            </div>
+            <div class="col-sm-4">
+                <img class="thumbnail" src="/static/img/step3.jpg"/>
+            </div>
+        </div>
+    </div>
+{% endblock %}

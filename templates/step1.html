@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        #content {
+            background-color: transparent;
+            border: none;
+        }
+
+        #block {
+            border: solid #e8e8e8 1px;
+            border-radius: 4px;
+            background-color: white;
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+
+        #qrcode {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+{% block script %}
+    <script>
+        $(function () {
+            function checklogin() {
+                $.ajax({
+                    url: '/checklogin',
+                    success: function (data) {
+                        if (data.result) {
+                            window.location = '/step2'
+                        } else {
+                            setTimeout(checklogin, 100);
+                        }
+                    },
+                    err: function () {
+                        $(".text-muted").text('服务器发生错误');
+                        setTimeout(checklogin, 100);
+                    }
+                })
+            }
+
+            checklogin();
+        })
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="text-center row">
+        <div id="block" class="col-sm-4 col-sm-offset-4">
+            <h3 class="page-header">第一步:登录账号</h3>
+            <img id="qrcode" src="/{{ qrcode }}"/>
+            <p class="text-muted">扫描登录微信账号 </p>
+        </div>
+    </div>
+{% endblock %}
